@@ -1,0 +1,31 @@
+[project]
+name = "browser-router"
+version = "0.1.0"
+description = "A less shit way to handle CLI -> browser OAuth workflows"
+readme = "README.md"
+authors = [
+    { name = "Jonathan Wright", email = "jonathan.wright@a11.global" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic>=2.14.2",
+    "python-dotenv>=1.2.4",
+    "pyyaml>=6.0.3",
+]
+
+[project.scripts]
+browser-router = "browser_router.main:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
+module-name = "browser_router"
+namespace = true
+
+[dependency-groups]
+dev = [
+    "black>=26.10.1",
+    "pytest>=9.2.0",
+    "ruff>=0.17.3",
+    "ty>=0.0.95",
+]
