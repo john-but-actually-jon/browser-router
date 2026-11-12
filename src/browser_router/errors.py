@@ -14,6 +14,9 @@ class ClientError(ABCError):
     _message = "[ClientError] Unhandled client error: {e}"
     code = 400
     
+class StartupError(ServerError):
+    _message = "[StartupError] Startup error: {e}"
+    code = 500
 
 class BrowserRouterError(ServerError):
     _message = "[BrowserRouterError] Browser router error: {} "

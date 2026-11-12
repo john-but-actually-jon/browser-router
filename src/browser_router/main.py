@@ -1,10 +1,12 @@
 import os
+import sys
 from argparse import ArgumentParser
 from http.server import HTTPServer
 
 from browser_router.config import get_config
 from browser_router.handler import Handler
 from browser_router.intlogging import get_logger
+from browser_router.errors import StartupError
 
 
 def parse_args():
@@ -36,6 +38,9 @@ def main():
         server.serve_forever()
     except KeyboardInterrupt:
         logger.info("Shutting down browser router server due to KeyboardInterrupt")
+    except StartupError as e:
+        logger.error(f"Error starting browser router server: {e}")
+        sys.exit(1)
     except Exception as e:
         logger.error(f"Error running browser router server: {e}")
         raise
